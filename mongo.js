@@ -108,7 +108,7 @@ db.movies.find({$and: [{"synopsis":{$regex:"dwarves"}}, {"synopsis": {$regex:"ho
 
 //{ Delete }
 // delete the movie "Pee Wee Herman's Big Adventure"
-db.movies.remove({"title" : "Pee Wee Herman's Big Adventure"}
+db.movies.remove({"title" : "Pee Wee Herman's Big Adventure"})
 
 // delete the movie "Avatar"
 db.movies.remove({"title": "Avatar"})
