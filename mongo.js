@@ -52,6 +52,10 @@ db.movies.insertMany([
   } 
 ])
 
+db.movies.insert({"title" : "Pee Wee Herman's Big Adventure"})
+db.movies.insert({"title" : "Avatar"})
+
+
 // { FIND }
 // to find every documents in  
 db.movies.find().pretty();
@@ -89,13 +93,22 @@ db.movies.update({"title":"Pulp Fiction"}, {$push : {"movie": "Samuel L. Jackson
 // find all movies that have a synopsis that contains the word "Bilbo"
 db.movies.find({"synopsis": { $regex: "Bilbo"} }).pretty()
 
+// find all movies that have a synopsis that contains the word "Gandalf"
+db.movies.find({"synopsis" : { $regex : "Gandalf"}}).pretty()
+
+//find all movies that have a synopsis that contains the word "Bilbo" and not the word "Gandalf"
+db.movies.find({$and : [{"synopsis":{$regex:"Bilbo"}}, {"synopsis": {$not: /Gandalf/ } }]})
+
+// find all movies that have a synopsis that contains the word "dwarves" or "hobbit"
+db.movies.find({$or: [{"synopsis":{$regex:"dwarves"}}, {"synopsis": {$regex:"hobbit"}}]})
+
+// find all movies that have a synopsis that contains the word "gold" and "dragon"
+db.movies.find({$and: [{"synopsis":{$regex:"dwarves"}}, {"synopsis": {$regex:"hobbit"}}]})
 
 
+//{ Delete }
+// delete the movie "Pee Wee Herman's Big Adventure"
+db.movies.remove({"title" : "Pee Wee Herman's Big Adventure"}
 
-
-
-
-
-
-
-
+// delete the movie "Avatar"
+db.movies.remove({"title": "Avatar"})
