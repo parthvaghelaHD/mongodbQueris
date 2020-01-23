@@ -52,9 +52,9 @@ db.movies.insertMany([
   } 
 ])
 
+// { FIND }
 // to find every documents in  
 db.movies.find().pretty();
-
 // get all documents with writer set to "Quentin Tarantino"
 db.movies.find({"writer": "Quentin Tarantino"}).pretty();
 
@@ -69,6 +69,13 @@ db.movies.find({"year" : {$lte : 2000}}).pretty()
 
 // get all movies released before the year 2000 or after 2010
 db.movies.find({$or : [{"year" : {$lte : 2000}}, {"year" : {$gt: 2010}}] }).pretty()
+
+
+
+// {Update }
+// add a synopsis to "The Hobbit: An Unexpected Journey" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."
+
+db.movies.update({"title" :"The Hobbit: An Unexpected Journey"}, {$set : { "title": "The Hobbit A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."}})
 
 
 
