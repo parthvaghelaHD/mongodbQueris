@@ -72,6 +72,7 @@ db.movies.find({$or : [{"year" : {$lte : 2000}}, {"year" : {$gt: 2010}}] }).pret
 
 
 
+
 // {  Update }
 
 // add a synopsis to "The Hobbit: An Unexpected Journey" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."
@@ -84,6 +85,9 @@ db.movies.update({"title" :"The Hobbit: The Desolation of Smaug"}, {$set : { "ti
 db.movies.update({"title":"Pulp Fiction"}, {$push : {"movie": "Samuel L. Jackson"}}, { multi: true })
 
 
+// { Text Search }
+// find all movies that have a synopsis that contains the word "Bilbo"
+db.movies.find({"synopsis": { $regex: "Bilbo"} }).pretty()
 
 
 
