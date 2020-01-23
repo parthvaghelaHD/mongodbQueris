@@ -72,14 +72,16 @@ db.movies.find({$or : [{"year" : {$lte : 2000}}, {"year" : {$gt: 2010}}] }).pret
 
 
 
-// {Update }
-// add a synopsis to "The Hobbit: An Unexpected Journey" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."
+// {  Update }
 
+// add a synopsis to "The Hobbit: An Unexpected Journey" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."
 db.movies.update({"title" :"The Hobbit: An Unexpected Journey"}, {$set : { "title": "The Hobbit A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."}})
 
+// add a synopsis to "The Hobbit: The Desolation of Smaug" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring."
+db.movies.update({"title" :"The Hobbit: The Desolation of Smaug"}, {$set : { "title": "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring."}})
 
-
-
+//add an actor named "Samuel L. Jackson" to the movie "Pulp Fiction"
+db.movies.update({"title":"Pulp Fiction"}, {$push : {"movie": "Samuel L. Jackson"}}, { multi: true })
 
 
 
