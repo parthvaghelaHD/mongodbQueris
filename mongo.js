@@ -1,4 +1,4 @@
-use mongo_practice,
+use mongo_practice
 
 db.createCollection('movies')
 
@@ -49,6 +49,8 @@ db.movies.insertMany([
     "year": 2012,
     "franchise": "The Hobbit",
     "synopsis": "Bilbo and Company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness."
-  }
+  } 
 ])
 
+// to find every documents in  
+db.movies.find().pretty();
